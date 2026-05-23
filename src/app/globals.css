@@ -1,26 +1,567 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #111111;
+  overflow-x: hidden;
+}
+
+.pixel-font {
+  font-family: var(--font-pixel);
+}
+
+.mono-font {
+  font-family: var(--font-mono);
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
+  background-size: 40px 40px;
+}
+
+.glow-green {
+  box-shadow: 0 0 15px rgba(180, 255, 180, 0.3);
+}
+
+.glow-pink {
+  box-shadow: 0 0 15px rgba(255, 180, 220, 0.3);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+::selection {
+  background: #ffc8dd;
+  color: black;
+}
+
+.scanline::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      rgba(255,255,255,0.03) 50%,
+      transparent 50%
+    );
+
+  background-size: 100% 4px;
+
+  pointer-events: none;
+}
+
+.cursor::after {
+  content: "_";
+
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+
+  51%, 100% {
+    opacity: 0;
+  }
+}
+.loading-bar {
+  width: 0%;
+
+  animation: loading 2.5s ease forwards;
+}
+
+@keyframes loading {
+
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.scanline::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      rgba(255,255,255,0.03) 50%,
+      transparent 50%
+    );
+
+  background-size: 100% 4px;
+
+  pointer-events: none;
+}
+
+.cursor::after {
+  content: "_";
+
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+  0%, 50% {
+    opacity: 1;
+  }
+
+  51%, 100% {
+    opacity: 0;
+  }
+
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
+  background-size: 40px 40px;
+}
+
+.glow-green {
+  box-shadow: 0 0 20px rgba(180,255,180,0.2);
+}
+.float {
+  animation: floating 4s ease-in-out infinite;
+}
+
+.float-slow {
+  animation: floating 7s ease-in-out infinite;
+}
+
+.float-fast {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+
+}
+.float {
+  animation: floating 4s ease-in-out infinite;
+}
+
+.float-slow {
+  animation: floating 7s ease-in-out infinite;
+}
+
+@keyframes floating {
+
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+
+}
+.pixel-font {
+  font-family: var(--font-pixel);
+}
+
+.mono-font {
+  font-family: var(--font-mono);
+}
+
+body {
+  background: #111111;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #111111;
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+/* fonts */
+.pixel-font {
+  font-family: var(--font-pixel);
+}
+
+.mono-font {
+  font-family: var(--font-mono);
+}
+
+/* floating */
+.float {
+  animation: floating 4s ease-in-out infinite;
+}
+
+.float-slow {
+  animation: floating 7s ease-in-out infinite;
+}
+
+@keyframes floating {
+
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+
+}
+
+/* scanline */
+.scanline::before {
+
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      rgba(255,255,255,0.03) 50%,
+      transparent 50%
+    );
+
+  background-size: 100% 4px;
+
+  pointer-events: none;
+}
+
+/* terminal cursor */
+.cursor::after {
+  content: "_";
+
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+  0%, 50% {
+    opacity: 1;
+  }
+
+  51%, 100% {
+    opacity: 0;
+  }
+
+}
+
+/* grid */
+.grid-bg {
+
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
+  background-size: 40px 40px;
+}
+
+/* glow */
+.glow-green {
+  box-shadow: 0 0 30px rgba(183,239,197,0.15);
+}
+
+.glow-pink {
+  box-shadow: 0 0 30px rgba(255,200,221,0.12);
+}
+
+/* glitch */
+.glitch {
+  position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+
+  content: attr(data-text);
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  overflow: hidden;
+}
+
+.glitch::before {
+
+  color: #ffc8dd;
+
+  transform: translate(-2px, 0);
+
+  opacity: 0.7;
+}
+
+.glitch::after {
+
+  color: #b7efc5;
+
+  transform: translate(2px, 0);
+
+  opacity: 0.7;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* hover cards */
+.project-card {
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+
+  transform: translateY(-10px) scale(1.02);
+
+  box-shadow:
+    0 0 20px rgba(255,255,255,0.06);
+}
+.glitch {
+  position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+
+  content: attr(data-text);
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  overflow: hidden;
+}
+
+.glitch::before {
+
+  color: #ffc8dd;
+
+  transform: translate(-2px, 0);
+
+  opacity: 0.7;
+}
+
+.glitch::after {
+
+  color: #b7efc5;
+
+  transform: translate(2px, 0);
+
+  opacity: 0.7;
+}
+body::before {
+
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  background-image:
+    url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+
+  opacity: 0.03;
+
+  pointer-events: none;
+
+  z-index: 999;
+}
+/* ================= CYBER BACKGROUND ================= */
+
+.cyber-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cyber-line {
+  position: absolute;
+  color: rgba(183, 239, 197, 0.08);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  white-space: nowrap;
+  animation: fall linear infinite;
+}
+
+.cyber-line:nth-child(1) {
+  left: 5%;
+  animation-duration: 18s;
+}
+
+.cyber-line:nth-child(2) {
+  left: 20%;
+  animation-duration: 14s;
+}
+
+.cyber-line:nth-child(3) {
+  left: 40%;
+  animation-duration: 22s;
+}
+
+.cyber-line:nth-child(4) {
+  left: 65%;
+  animation-duration: 17s;
+}
+
+.cyber-line:nth-child(5) {
+  left: 85%;
+  animation-duration: 25s;
+}
+
+@keyframes fall {
+
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(120vh);
+  }
+
+}
+
+/* navbar */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+
+  backdrop-filter: blur(12px);
+
+  background: rgba(10,10,10,0.5);
+
+  border-bottom: 1px solid #2d2d2d;
+}
+
+/* avatar */
+
+.avatar-glow {
+
+  box-shadow:
+    0 0 30px rgba(183,239,197,0.2),
+    0 0 60px rgba(255,200,221,0.1);
+
+}
+
+/* sections */
+
+.section-container {
+  max-width: 1400px;
+  margin: auto;
+  width: 100%;
+}
+
+/* reveal */
+
+.reveal {
+  animation: reveal 1s ease;
+}
+
+@keyframes reveal {
+
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+/* neon border */
+
+.neon-hover {
+  transition: all 0.3s ease;
+}
+
+.neon-hover:hover {
+
+  border-color: #b7efc5;
+
+  box-shadow:
+    0 0 20px rgba(183,239,197,0.2);
+
+}
+
+/* futuristic line */
+
+.cyber-divider {
+
+  width: 100%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(183,239,197,0.4),
+      transparent
+    );
+
+  margin: 120px 0;
 }
