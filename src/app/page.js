@@ -8,7 +8,7 @@ export default function Home() {
 
   useEffect(() => {
 
-    fetch("https://api.github.com/users/BEATRIZPAGLIANI")
+    fetch("https://api.github.com/users/BeatrizPagliani")
       .then((response) => response.json())
       .then((data) => setGithub(data));
 
@@ -69,6 +69,14 @@ export default function Home() {
 
             <a href="#projects" className="hover:text-[#ffc8dd] transition">
               PROJECTS
+            </a>
+
+            <a href="#experience" className="hover:text-[#ffc8dd] transition">
+              EXPERIENCE
+            </a>
+
+            <a href="#github" className="hover:text-[#ffc8dd] transition">
+              API
             </a>
 
           </div>
@@ -334,6 +342,210 @@ export default function Home() {
         </div>
 
       </section>
+
+      <div className="cyber-divider"></div>
+
+      {/* ================= EXPERIENCE ================= */}
+
+      <section
+        id="experience"
+        className="min-h-screen px-6 py-20"
+      >
+
+        <div className="section-container reveal">
+
+          <p className="mono-font text-[#ffc8dd] text-xl mb-4">
+            CAREER LOG
+          </p>
+
+          <h2 className="pixel-font text-4xl md:text-6xl mb-16">
+            EXPERIENCE.EXE
+          </h2>
+
+          <div className="space-y-8">
+
+            <div className="neon-hover border border-[#3a3a3a] bg-[#1a1a1a]/70 rounded-2xl p-10">
+
+              <p className="mono-font text-[#b7efc5] mb-3">
+                2026 • QA INTERN
+              </p>
+
+              <h3 className="pixel-font text-2xl mb-4 text-[#ffc8dd]">
+                MV SISTEMAS
+              </h3>
+
+              <p className="mono-font text-[#d6d6d6] text-xl leading-8">
+
+                Estágio em Quality Assurance com foco em testes,
+                automação, qualidade de software e processos ágeis.
+
+              </p>
+
+            </div>
+
+            <div className="neon-hover border border-[#3a3a3a] bg-[#1a1a1a]/70 rounded-2xl p-10">
+
+              <p className="mono-font text-[#b7efc5] mb-3">
+                2026 • VOLUNTEER
+              </p>
+
+              <h3 className="pixel-font text-2xl mb-4 text-[#cddafd]">
+                JORNADA TECNOLÓGICA UNICAP
+              </h3>
+
+              <p className="mono-font text-[#d6d6d6] text-xl leading-8">
+
+                Participação voluntária em eventos,
+                hackathons, minicursos e palestras
+                voltadas para tecnologia e inovação.
+
+              </p>
+
+            </div>
+
+            <div className="neon-hover border border-[#3a3a3a] bg-[#1a1a1a]/70 rounded-2xl p-10">
+
+              <p className="mono-font text-[#b7efc5] mb-3">
+                2025 - NOW • STUDENT
+              </p>
+
+              <h3 className="pixel-font text-2xl mb-4 text-[#b7efc5]">
+                SISTEMAS PARA INTERNET
+              </h3>
+
+              <p className="mono-font text-[#d6d6d6] text-xl leading-8">
+
+                Universidade Católica de Pernambuco.
+                Desenvolvimento web, APIs, banco de dados,
+                UI/UX e engenharia de software.
+
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <div className="cyber-divider"></div>
+
+      {/* ================= GITHUB API ================= */}
+
+      <section
+        id="github"
+        className="min-h-screen px-6 py-20 flex items-center"
+      >
+
+        <div className="section-container reveal">
+
+          <p className="mono-font text-[#b7efc5] text-xl mb-4">
+            LIVE DATABASE
+          </p>
+
+          <h2 className="pixel-font text-4xl md:text-6xl mb-16">
+            GITHUB_API.EXE
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+
+            <div className="neon-hover border border-[#3a3a3a] bg-[#1a1a1a]/70 rounded-2xl p-10">
+
+              <p className="mono-font text-[#777] mb-4">
+                FOLLOWERS
+              </p>
+
+              <h3 className="pixel-font text-4xl text-[#b7efc5]">
+
+                {github ? github.followers : "..."}
+
+              </h3>
+
+            </div>
+
+            <div className="neon-hover border border-[#3a3a3a] bg-[#1a1a1a]/70 rounded-2xl p-10">
+
+              <p className="mono-font text-[#777] mb-4">
+                PUBLIC REPOS
+              </p>
+
+              <h3 className="pixel-font text-4xl text-[#ffc8dd]">
+
+                {github ? github.public_repos : "..."}
+
+              </h3>
+
+            </div>
+
+            <div className="neon-hover border border-[#3a3a3a] bg-[#1a1a1a]/70 rounded-2xl p-10">
+
+              <p className="mono-font text-[#777] mb-4">
+                USERNAME
+              </p>
+
+              <h3 className="pixel-font text-2xl text-[#cddafd] break-words">
+
+                {github ? github.login : "loading"}
+
+              </h3>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* ================= FOOTER ================= */}
+
+      <footer className="border-t border-[#2d2d2d] py-10 px-6 bg-[#0d0d0d]">
+
+        <div className="section-container flex flex-col md:flex-row justify-between items-center gap-6">
+
+          <div>
+
+            <h3 className="pixel-font text-[#b7efc5] text-xl mb-2">
+              BEATRIZ.EXE
+            </h3>
+
+            <p className="mono-font text-[#777]">
+              SYSTEM ONLINE © 2026
+            </p>
+
+          </div>
+
+          <div className="flex gap-6 mono-font text-lg">
+
+            <a
+              href="https://github.com/BeatrizPagliani"
+              target="_blank"
+              className="hover:text-[#ffc8dd] transition"
+            >
+              GITHUB
+            </a>
+
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              className="hover:text-[#ffc8dd] transition"
+            >
+              LINKEDIN
+            </a>
+
+            <a
+              href="mailto:beatriz@email.com"
+              className="hover:text-[#ffc8dd] transition"
+            >
+              EMAIL
+            </a>
+
+          </div>
+
+        </div>
+
+      </footer>
 
     </main>
 
