@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
 
-  const [github, setGithub] = useState(null);
+  const [repos, setRepos] = useState([]);
 
   useEffect(() => {
 
-    fetch("https://api.github.com/users/BeatrizPagliani")
+    fetch("https://api.github.com/users/BeatrizPagliani/repos?per_page=30&sort=updated")
       .then((response) => response.json())
-      .then((data) => setGithub(data));
+      .then((data) => setRepos(data));
 
   }, []);
 
@@ -157,7 +157,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-[#b7efc5] opacity-20 blur-3xl rounded-full"></div>
 
                 <img
-                  src="https://i.pinimg.com/736x/4d/77/ef/4d77efc2d8f8d5b67e0a8b7f0d9f2b8.jpg"
+                  src="foto.png"
                   alt="avatar"
                   className="relative z-10 w-[320px] md:w-[420px] rounded-full border border-[#3a3a3a] avatar-glow"
                 />
@@ -431,72 +431,59 @@ export default function Home() {
 
       <div className="cyber-divider"></div>
 
-      {/* ================= GITHUB API ================= */}
-
+      {/* ================= GITHUB REPOS ================= */}
+      
       <section
-        id="github"
-        className="min-h-screen px-6 py-20 flex items-center"
+      id="github"
+      className="min-h-screen px-6 py-20"
       >
-
-        <div className="section-container reveal">
-
-          <p className="mono-font text-[#b7efc5] text-xl mb-4">
-            LIVE DATABASE
-          </p>
-
-          <h2 className="pixel-font text-4xl md:text-6xl mb-16">
-            GITHUB_API.EXE
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            <div className="neon-hover border border-[#3a3a3a] bg-[#1a1a1a]/70 rounded-2xl p-10">
-
-              <p className="mono-font text-[#777] mb-4">
-                FOLLOWERS
-              </p>
-
-              <h3 className="pixel-font text-4xl text-[#b7efc5]">
-
-                {github ? github.followers : "..."}
-
-              </h3>
-
-            </div>
-
-            <div className="neon-hover border border-[#3a3a3a] bg-[#1a1a1a]/70 rounded-2xl p-10">
-
-              <p className="mono-font text-[#777] mb-4">
-                PUBLIC REPOS
-              </p>
-
-              <h3 className="pixel-font text-4xl text-[#ffc8dd]">
-
-                {github ? github.public_repos : "..."}
-
-              </h3>
-
-            </div>
-
-            <div className="neon-hover border border-[#3a3a3a] bg-[#1a1a1a]/70 rounded-2xl p-10">
-
-              <p className="mono-font text-[#777] mb-4">
-                USERNAME
-              </p>
-
-              <h3 className="pixel-font text-2xl text-[#cddafd] break-words">
-
-                {github ? github.login : "loading"}
-
-              </h3>
-
-            </div>
-
+      <div className="section-container reveal">
+      
+      <p className="mono-font text-[#b7efc5] text-xl mb-4">
+      LIVE DATABASE
+      </p>
+      
+      <h2 className="pixel-font text-4xl md:text-6xl mb-16">
+      GITHUB_PROJECTS.EXE
+      </h2>
+      
+      <div className="grid md:grid-cols-2 gap-8">
+        
+        {repos.map((repo) => (
+          
+          <a
+          key={repo.id}
+          href={repo.html_url}
+          target="_blank"
+          className="neon-hover border border-[#3a3a3a] bg-[#1a1a1a]/70 rounded-2xl p-10 block"
+          >
+            
+            <p className="mono-font text-[#777] mb-4">
+            REPOSITORY
+            
+            </p>
+            
+            <h3 className="pixel-font text-2xl text-[#b7efc5] mb-6 break-words">
+              
+              {repo.name}
+              
+            </h3>
+            
+            <p className="mono-font text-[#d6d6d6] leading-8 text-xl">
+              
+              {repo.description
+              ? repo.description
+              : "No description available."}
+            </p>
+            
+            </a>
+          
+          ))}
+          
           </div>
-
-        </div>
-
-      </section>
+          
+          </div>
+          </section>
 
       {/* ================= FOOTER ================= */}
 
@@ -535,7 +522,7 @@ export default function Home() {
             </a>
 
             <a
-              href="mailto:beatriz@email.com"
+              href="mailto:beatrizsales.pcc@gmail.com"
               className="hover:text-[#ffc8dd] transition"
             >
               EMAIL
